@@ -1,0 +1,32 @@
+{
+    "name": "getheybot/heybot-client-php",
+    "description": "Heybot PHP SDK Client",
+    "homepage": "https://github.com/UseHeyBot/heybot-client-php",
+    "type": "library",
+    "license": "proprietary",
+    "autoload": {
+        "psr-4": {
+            "Heybot\\Client\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Heybot",
+            "email": "support@heybot.me"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "illuminate/http": "~11"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require-dev": {
+        "pestphp/pest": "^2.34"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}

@@ -150,7 +150,26 @@ $whatsapp = \Heybot\Message\Contact::create([
     ],
 ]);
 ```
+## Chat
+Coming soon
 
+```php
+$chat = new \Heybot\Client\Chat(apiKey: '')
+
+$chat->request(
+    \Heybot\Chat\Chat::create([
+        'entity' => '5523456782', 
+        'action' => \Heybot\Client\Enums\ChatOptions::START
+    ])
+);
+
+$chat->request(
+    \Heybot\Chat\Chat::create([
+        'entity' => '5523456782', 
+        'action' => \Heybot\Client\Enums\ChatOptions::END
+    ])
+);
+```
 
 ## Leads
 Coming soon

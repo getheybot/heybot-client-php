@@ -1,12 +1,13 @@
 <?php
 
 namespace Heybot\Client;
-;
 
-use Heybot\Client\Interfaces\Strategy;
+use GuzzleHttp\Promise\PromiseInterface;
+use Illuminate\Http\Client\ConnectionException;
+use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
 
-class Lead implements Strategy
+class Chat
 {
     /**
      * @param string $apiKey
@@ -14,16 +15,16 @@ class Lead implements Strategy
      */
     public function __construct(
         private string $apiKey = '',
-        private string $apiHost = 'https://platform.heybot.me/api/v0.1/leads',
+        private string $apiHost = 'https://platform.heybot.me/api/v0.1/chats',
     ) {}
 
     /**
-     * @param array $data
-     * @return \GuzzleHttp\Promise\PromiseInterface|\Illuminate\Http\Client\Response
-     * @throws \Illuminate\Http\Client\ConnectionException
+     * @param \Heybot\Chat\Chat $action
+     * @return PromiseInterface|Response
+     * @throws ConnectionException
      */
     public function request(
-        array $data
+         \Heybot\Chat\Chat $action
     ): \GuzzleHttp\Promise\PromiseInterface|\Illuminate\Http\Client\Response {
         return Http::withToken(
             $this->apiKey
@@ -32,17 +33,17 @@ class Lead implements Strategy
         )->withHeaders([
             'User-Agent' => 'heybot-client-php/0.0.1',
         ])->post($this->apiHost, [
-            'data' => $data,
+            'data' => $action->toArray(),
         ]);
     }
 
     /**
-     * @param array $data
-     * @return \GuzzleHttp\Promise\PromiseInterface|\Illuminate\Http\Client\Response
-     * @throws \Illuminate\Http\Client\ConnectionException
+     * @param \Heybot\Chat\Chat $action
+     * @return PromiseInterface|Response
+     * @throws ConnectionException
      */
     public function requestAsync(
-        array $data
+        \Heybot\Chat\Chat $action
     ): \GuzzleHttp\Promise\PromiseInterface|\Illuminate\Http\Client\Response {
         return Http::withToken(
             $this->apiKey
@@ -51,7 +52,7 @@ class Lead implements Strategy
         )->withHeaders([
             'User-Agent' => 'heybot-client-php/0.0.1',
         ])->async()->post($this->apiHost, [
-            'data' => $data,
+            'data' => $action->toArray(),
         ]);
     }
 }

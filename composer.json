@@ -1,7 +1,7 @@
 {
     "name": "getheybot/heybot-client-php",
     "description": "Heybot PHP SDK Client",
-    "homepage": "https://github.com/UseHeyBot/heybot-client-php",
+    "homepage": "https://github.com/getheybot/heybot-client-php",
     "type": "library",
     "license": "proprietary",
     "autoload": {

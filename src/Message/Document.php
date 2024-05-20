@@ -17,5 +17,6 @@ class Document
     
     public string $url;
     public string $filename;
+    public null|string $contentType = null;
     public int $secondsDelay = 1;
 }

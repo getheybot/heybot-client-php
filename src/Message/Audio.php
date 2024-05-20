@@ -16,5 +16,6 @@ class Audio
     const MESSAGE_TYPE = MessageType::AUDIO;
 
     public string $url;
+    public null|string $contentType = null;
     public int $secondsDelay = 1;
 }

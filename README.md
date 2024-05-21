@@ -10,6 +10,8 @@ composer require getheybot/heybot-client-php
 Send messages to one phone number
 
 ```php
+# Basic usage
+
 $whatsapp = new \Heybot\Client\Whatsapp(apiKey: '')
 
 $whatsapp->phoneNumber("521782003377");
@@ -150,8 +152,85 @@ $whatsapp = \Heybot\Message\Contact::create([
     ],
 ]);
 ```
-## Chat
-Coming soon
+
+## Send template message
+### usually for massive sends
+
+```php
+
+$whatsapp = new \Heybot\Client\Whatsapp(apiKey: '')
+
+$whatsapp->template(templateId: '{template-id}');
+
+$messages = [
+    \Heybot\Message\Template::create([
+        'phoneNumber' => '5523456782', 
+        'params' => ['foo', 'bar'] // The template params required
+    ]),
+    \Heybot\Message\Template::create([
+        'phoneNumber' => '5698544585', 
+        'params' => ['foo', 'bar'] // The template params required
+    ])
+];
+
+$whatsapp->request($messages);
+```
+
+## Send campaign template
+### usually for segments
+
+```php
+
+$whatsapp = new \Heybot\Client\Whatsapp(apiKey: '')
+
+$whatsapp->campaign(
+    name: 'Engagement Express: Ages 18 - 25"', // 100 chars limit 
+    templateId: '{template-id}'
+);
+
+$messages = [
+    \Heybot\Message\Template::create([
+        'phoneNumber' => '5523456782', 
+        'params' => ['foo A', 'bar B'] // The template params required
+    ]),
+    \Heybot\Message\Template::create([
+        'phoneNumber' => '5698544585', 
+        'params' => ['foo', 'bar'] // The template params required
+    ]),
+    // ...
+];
+
+$whatsapp->request($messages);
+
+// Another campaign
+
+$whatsapp->campaign(
+    name: 'Engagement Express: Ages 26 - 30"', // 100 chars limit 
+    templateId: '{template-id}'
+);
+
+$messages = [
+    \Heybot\Message\Template::create([
+        'phoneNumber' => '5698544585', 
+        'params' => ['foo A', 'bar B'] // The template params required
+    ]),
+    \Heybot\Message\Template::create([
+        'phoneNumber' => '5523456782', 
+        'params' => ['foo', 'bar'] // The template params required
+    ]),
+    // ...
+];
+
+$whatsapp->request($messages);
+```
+
+# Coming soon
+
+* Chat - Not available yet
+* Leads - Not available yet
+
+## Chat - Not available yet
+
 
 ```php
 $chat = new \Heybot\Client\Chat(apiKey: '')
@@ -171,8 +250,7 @@ $chat->request(
 );
 ```
 
-## Leads
-Coming soon
+## Leads - Not available yet
 
 ```php
 $leads = new \Heybot\Client\Lead(apiKey: '')

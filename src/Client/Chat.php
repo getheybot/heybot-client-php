@@ -15,7 +15,7 @@ class Chat
      */
     public function __construct(
         private string $apiKey = '',
-        private string $apiHost = 'https://platform.heybot.me/api/v0.1/chats',
+        private string $apiHost = 'https://relay.message-server.app/api/v1',
     ) {}
 
     /**

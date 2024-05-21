@@ -14,4 +14,8 @@ class Template
     use Validate;
 
     const MESSAGE_TYPE = MessageType::TEMPLATE;
+
+    public string $phoneNumber;
+    public array $params = [];
+    public int $secondsDelay = 1;
 }

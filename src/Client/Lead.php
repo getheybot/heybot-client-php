@@ -8,13 +8,15 @@ use Illuminate\Support\Facades\Http;
 
 class Lead implements Strategy
 {
+    const USER_AGENT = 'heybot-client-php/v1';
+
     /**
      * @param string $apiKey
      * @param string $apiHost
      */
     public function __construct(
         private string $apiKey = '',
-        private string $apiHost = 'https://platform.heybot.me/api/v0.1/leads',
+        private string $apiHost = 'https://relay.message-server.app/api/v1',
     ) {}
 
     /**
@@ -30,7 +32,7 @@ class Lead implements Strategy
         )->timeout(
             10
         )->withHeaders([
-            'User-Agent' => 'heybot-client-php/0.0.1',
+            'User-Agent' => self::USER_AGENT,
         ])->post($this->apiHost, [
             'data' => $data,
         ]);
@@ -49,7 +51,7 @@ class Lead implements Strategy
         )->timeout(
             10
         )->withHeaders([
-            'User-Agent' => 'heybot-client-php/0.0.1',
+            'User-Agent' => self::USER_AGENT,
         ])->async()->post($this->apiHost, [
             'data' => $data,
         ]);

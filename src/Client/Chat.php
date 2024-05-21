@@ -15,7 +15,7 @@ class Chat
      */
     public function __construct(
         private string $apiKey = '',
-        private string $apiHost = 'https://relay.message-server.app/api/v1',
+        private string $apiHost = 'https://message-server.app/api/v1',
     ) {}
 
     /**

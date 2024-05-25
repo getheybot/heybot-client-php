@@ -1,6 +1,6 @@
 <?php
 
-namespace Heybot\Lead;
+namespace Heybot\Client\Lead;
 
 use Heybot\Client\Traits\StaticCreateSelf;
 use Heybot\Client\Traits\ToArray;

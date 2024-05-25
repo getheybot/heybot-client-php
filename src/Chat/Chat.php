@@ -1,6 +1,6 @@
 <?php
 
-namespace Heybot\Chat;
+namespace Heybot\Client\Chat;
 
 use Heybot\Client\Enums\ChatOptions;
 use Heybot\Client\Traits\StaticCreateSelf;

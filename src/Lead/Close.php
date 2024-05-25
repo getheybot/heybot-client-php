@@ -1,6 +1,6 @@
 <?php
 
-namespace Heybot\Lead;
+namespace Heybot\Client\Lead;
 
 use Heybot\Client\Enums\LeadTypeOption;
 use Heybot\Client\Traits\StaticCreateSelf;

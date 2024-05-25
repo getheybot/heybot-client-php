@@ -48,7 +48,7 @@ trait Validate
             MessageType::IMAGE => (new ImageRules),
             MessageType::STICKER => (new StickerRules),
             MessageType::TEMPLATE => (new TemplateRules),
-            MessageType::MESSAGE => (new MessageRules),
+            MessageType::TEXT => (new MessageRules),
             MessageType::VIDEO => (new VideoRules),
             default => throw new \Exception('Not implemented'),
         };

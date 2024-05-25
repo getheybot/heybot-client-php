@@ -19,6 +19,6 @@ enum MessageType: string {
     case STICKER = 'sticker';
     case REACTION = 'reaction';
     case TEMPLATE = 'template';
-    case MESSAGE = 'message';
+    case TEXT = 'text';
     case VIDEO = 'video';
 }

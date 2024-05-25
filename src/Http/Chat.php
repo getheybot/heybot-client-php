@@ -1,6 +1,6 @@
 <?php
 
-namespace Heybot\Client;
+namespace Heybot\Client\Http;
 
 use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Http\Client\ConnectionException;

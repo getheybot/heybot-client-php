@@ -1,19 +1,19 @@
 <?php
 
-namespace Heybot\Message;
+namespace Heybot\Client\Message;
 
 use Heybot\Client\Enums\MessageType;
 use Heybot\Client\Traits\StaticCreateSelf;
 use Heybot\Client\Traits\ToArray;
 use Heybot\Client\Traits\Validate;
 
-class TextMessage
+class Text
 {
     use StaticCreateSelf;
     use ToArray;
     use Validate;
 
-    const MESSAGE_TYPE = MessageType::MESSAGE;
+    const MESSAGE_TYPE = MessageType::TEXT;
 
     public string|int $text;
     public bool $previewUrl = false; // If you want to add a preview URL, set true:

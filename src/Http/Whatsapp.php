@@ -1,6 +1,6 @@
 <?php
 
-namespace Heybot\Client;
+namespace Heybot\Client\Http;
 
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Support\Facades\Http;

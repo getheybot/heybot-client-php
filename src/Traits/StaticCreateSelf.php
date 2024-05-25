@@ -9,9 +9,10 @@ trait StaticCreateSelf
     public static function create(array $values): self
     {
         $dto = new self();
+        $messageType = 'messageType';
 
         if (defined('self::MESSAGE_TYPE')) {
-            $dto->messageType = self::MESSAGE_TYPE;
+            $dto->$messageType = self::MESSAGE_TYPE;
         }
 
         foreach ($values as $key => $value) {

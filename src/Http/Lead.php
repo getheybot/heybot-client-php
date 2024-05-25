@@ -1,7 +1,7 @@
 <?php
 
-namespace Heybot\Client;
-;
+namespace Heybot\Client\Http;
+
 
 use Heybot\Client\Interfaces\Strategy;
 use Illuminate\Support\Facades\Http;

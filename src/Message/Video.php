@@ -17,5 +17,6 @@ class Video
 
     public string $url;
     public null|string|int $text;
+    public null|string $contentType = null;
     public int $secondsDelay = 1;
 }

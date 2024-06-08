@@ -12,7 +12,7 @@ Send messages to one phone number
 ```php
 # Basic usage
 
-$whatsapp = new \Heybot\Client\Http\Whatsapp(apiKey: '');
+$whatsapp = new \Heybot\Client\Http\Whatsapp(apiKey: '', server: \Heybot\Client\Enums\ServerOption::HEYBOT_SANDBOX);
 
 $whatsapp->phoneNumber("521782003377");
 
@@ -27,7 +27,7 @@ Interactive list
 
 ```php
 
-$whatsapp = new \Heybot\Client\Http\Whatsapp(apiKey: '');
+$whatsapp = new \Heybot\Client\Http\Whatsapp(apiKey: '', server: \Heybot\Client\Enums\ServerOption::HEYBOT_SANDBOX);
 
 $optionA = \Heybot\Client\Message\InteractiveListSectionOption::create([
     "id" => "optionA",
@@ -158,7 +158,7 @@ $whatsapp = \Heybot\Client\Message\Contact::create([
 
 ```php
 
-$whatsapp = new \Heybot\Client\Http\Whatsapp(apiKey: '')
+$whatsapp = new \Heybot\Client\Http\Whatsapp(apiKey: '', server: \Heybot\Client\Enums\ServerOption::HEYBOT_SANDBOX)
 
 $whatsapp->template(templateId: '{template-id}');
 

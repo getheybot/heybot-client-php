@@ -5,6 +5,7 @@ namespace Heybot\Client\Http;
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Support\Facades\Http;
 use Heybot\Client\Interfaces\Strategy;
+use Heybot\Client\Enums\ServerOption;
 
 class Whatsapp implements Strategy
 {
@@ -21,11 +22,11 @@ class Whatsapp implements Strategy
 
     /**
      * @param string $apiKey
-     * @param string $apiHost
+     * @param ServerOption $server
      */
     public function __construct(
-        private string $apiKey = '',
-        private string $apiHost = 'https://message-server.app/api/v1',
+        private string $apiKey,
+        private ServerOption $server = ServerOption::HEYBOT_PRODUCTION,
     ) { }
 
     /**
@@ -92,7 +93,7 @@ class Whatsapp implements Strategy
             10
         )->withHeaders([
             'User-Agent' => self::USER_AGENT,
-        ])->acceptJson()->asJson()->post($this->apiHost . $this->resource, $payload);
+        ])->acceptJson()->asJson()->post($this->server->value . $this->resource, $payload);
     }
 
     /**
@@ -124,6 +125,6 @@ class Whatsapp implements Strategy
             10
         )->withHeaders([
             'User-Agent' => self::USER_AGENT,
-        ])->async()->acceptJson()->asJson()->post($this->apiHost . $this->resource, $payload);
+        ])->async()->acceptJson()->asJson()->post($this->server->value . $this->resource, $payload);
     }
 }

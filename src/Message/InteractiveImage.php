@@ -15,8 +15,8 @@ class InteractiveImage
 
     const MESSAGE_TYPE = MessageType::INTERACTIVE_IMAGE;
 
-    private string $_id;
-    private MessageType $messageType;
+    private $_id;
+    private $messageType;
 
     public string|int $id;
     public string $url;

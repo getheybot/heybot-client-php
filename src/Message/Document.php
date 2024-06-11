@@ -15,8 +15,8 @@ class Document
 
     const MESSAGE_TYPE = MessageType::DOCUMENT;
 
-    private string $_id;
-    private MessageType $messageType;
+    private $_id;
+    private $messageType;
 
     public string $url;
     public string $filename;

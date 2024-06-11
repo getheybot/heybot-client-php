@@ -15,8 +15,8 @@ class Template
 
     const MESSAGE_TYPE = MessageType::TEMPLATE;
 
-    private string $_id;
-    private MessageType $messageType;
+    private $_id;
+    private $messageType;
 
     public string $phoneNumber;
     public array $params = [];

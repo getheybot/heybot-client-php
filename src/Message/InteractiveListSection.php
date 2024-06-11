@@ -15,8 +15,8 @@ class InteractiveListSection
 
     const MESSAGE_TYPE = MessageType::INTERACTIVE_LIST_SECTION;
 
-    private string $_id;
-    private MessageType $messageType;
+    private $_id;
+    private $messageType;
 
     public null|string|int $title;
     public null|string|int $description;

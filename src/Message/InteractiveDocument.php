@@ -15,8 +15,8 @@ class InteractiveDocument
 
     const MESSAGE_TYPE = MessageType::INTERACTIVE_DOCUMENT;
 
-    private string $_id;
-    private MessageType $messageType;
+    private $_id;
+    private $messageType;
 
     public string|int $id;
     public string $url;

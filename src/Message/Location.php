@@ -15,8 +15,8 @@ class Location
 
     const MESSAGE_TYPE = MessageType::LOCATION;
 
-    private string $_id;
-    private MessageType $messageType;
+    private $_id;
+    private $messageType;
 
     public float|string $longitude;
     public float|string $latitude;

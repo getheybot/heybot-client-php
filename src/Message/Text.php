@@ -15,8 +15,8 @@ class Text
 
     const MESSAGE_TYPE = MessageType::TEXT;
 
-    private string $_id;
-    private MessageType $messageType;
+    private $_id;
+    private $messageType;
 
     public string|int $text;
     public bool $previewUrl = false; // If you want to add a preview URL, set true:

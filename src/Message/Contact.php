@@ -15,8 +15,8 @@ class Contact
 
     const MESSAGE_TYPE = MessageType::CONTACT;
 
-    private string $_id;
-    private MessageType $messageType;
+    private $_id;
+    private $messageType;
 
     public array $name = [];
     public array $org = [];

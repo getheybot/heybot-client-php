@@ -15,8 +15,8 @@ class InteractiveText
 
     const MESSAGE_TYPE = MessageType::INTERACTIVE_TEXT;
 
-    private string $_id;
-    private MessageType $messageType;
+    private $_id;
+    private $messageType;
 
     public string|int $id;
     public null|string|int $header;

@@ -15,8 +15,8 @@ class InteractiveList
 
     const MESSAGE_TYPE = MessageType::INTERACTIVE_LIST;
 
-    private string $_id;
-    private MessageType $messageType;
+    private $_id;
+    private $messageType;
 
     public string|int $id;
     public string|int|null $title;

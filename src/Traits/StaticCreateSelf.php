@@ -12,11 +12,11 @@ trait StaticCreateSelf
     {
         $dto = new self();
 
-        if (isset($dto->_id)) {
-            $dto->_id = (new Ulid)->generate();
+        if (property_exists($dto, '_id')) {
+            $dto->_id = (string) (new Ulid)->generate();
         }
 
-        if (isset($dto->messageType)) {
+        if (property_exists($dto, 'messageType')) {
             $dto->messageType = self::MESSAGE_TYPE;
         }
 

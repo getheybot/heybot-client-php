@@ -15,6 +15,9 @@ class InteractiveListSectionOption
 
     const MESSAGE_TYPE = MessageType::INTERACTIVE_LIST_SECTION_OPTION;
 
+    private string $_id;
+    private MessageType $messageType;
+
     public string|int $id;
     public string|int $title;
     public string|int|null $description;

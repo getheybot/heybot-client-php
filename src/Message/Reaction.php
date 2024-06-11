@@ -15,6 +15,9 @@ class Reaction
 
     const MESSAGE_TYPE = MessageType::REACTION;
 
+    private string $_id;
+    private MessageType $messageType;
+
     public string $id;
     // - Can be normal emoji
     // - Should not be in 8-bit, 32-bit format

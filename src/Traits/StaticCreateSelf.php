@@ -4,15 +4,20 @@ declare(strict_types=1);
 
 namespace Heybot\Client\Traits;
 
+use Ulid\Ulid;
+
 trait StaticCreateSelf
 {
     public static function create(array $values): self
     {
         $dto = new self();
-        $messageType = 'messageType';
 
-        if (defined('self::MESSAGE_TYPE')) {
-            $dto->$messageType = self::MESSAGE_TYPE;
+        if (isset($dto->_id)) {
+            $dto->_id = (new Ulid)->generate();
+        }
+
+        if (isset($dto->messageType)) {
+            $dto->messageType = self::MESSAGE_TYPE;
         }
 
         foreach ($values as $key => $value) {

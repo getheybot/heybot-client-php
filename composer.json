@@ -17,7 +17,8 @@
     ],
     "require": {
         "php": "^8.2",
-        "illuminate/http": "~11"
+        "illuminate/http": "~11",
+        "not-empty/ulid-php-lib": "^6.0"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,

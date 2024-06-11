@@ -15,6 +15,9 @@ class Sticker
 
     const MESSAGE_TYPE = MessageType::STICKER;
 
+    private string $_id;
+    private MessageType $messageType;
+
     public string $url;
     public null|string $contentType = 'image/webp';
     public int $secondsDelay = 1;

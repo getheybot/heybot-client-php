@@ -15,6 +15,9 @@ class InteractiveVideo
 
     const MESSAGE_TYPE = MessageType::INTERACTIVE_VIDEO;
 
+    private string $_id;
+    private MessageType $messageType;
+
     public string|int $id;
     public string $url;
     public string|int $text;

@@ -15,6 +15,9 @@ class Video
 
     const MESSAGE_TYPE = MessageType::VIDEO;
 
+    private string $_id;
+    private MessageType $messageType;
+
     public string $url;
     public null|string|int $text;
     public null|string $contentType = null;

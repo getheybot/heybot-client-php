@@ -15,6 +15,9 @@ class InteractiveButton
 
     const MESSAGE_TYPE = MessageType::INTERACTIVE_BUTTON;
 
+    private string $_id;
+    private MessageType $messageType;
+
     public string|int $id;
     public string $text;
 }

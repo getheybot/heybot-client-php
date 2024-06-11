@@ -14,7 +14,10 @@ class Document
     use Validate;
 
     const MESSAGE_TYPE = MessageType::DOCUMENT;
-    
+
+    private string $_id;
+    private MessageType $messageType;
+
     public string $url;
     public string $filename;
     public null|string $contentType = null;

@@ -9,7 +9,7 @@ use Heybot\Client\Enums\ServerOption;
 
 class Whatsapp implements Strategy
 {
-    private string $phone;
+    private string|int $phone;
     private string $templateId;
     private string $campaignName;
     private string $resource;

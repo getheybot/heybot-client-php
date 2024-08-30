@@ -20,5 +20,6 @@ class Template
 
     public string $phoneNumber;
     public array $params = [];
+    public array $buttons = [];
     public int $secondsDelay = 1;
 }

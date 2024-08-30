@@ -26,7 +26,7 @@ class Whatsapp implements Strategy
      */
     public function __construct(
         private string $apiKey,
-        private ServerOption $server = ServerOption::HEYBOT_PRODUCTION,
+        private ServerOption $server = ServerOption::HEYBOT_SANDBOX,
     ) { }
 
     /**
@@ -90,7 +90,7 @@ class Whatsapp implements Strategy
         return Http::withToken(
             $this->apiKey
         )->timeout(
-            10
+            30
         )->withHeaders([
             'User-Agent' => self::USER_AGENT,
         ])->acceptJson()->asJson()->post($this->server->value . $this->resource, $payload);

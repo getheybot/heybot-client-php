@@ -165,8 +165,8 @@ $whatsapp->template(templateId: '{template-id}');
 $messages = [
     \Heybot\Client\Message\Template::create([
         'phoneNumber' => '5698544585', 
-        'params' => ['foo', 'bar'] // The template params by index position, optional.
-        'buttons' => [['index': 0, 'text' => '<postback_text>']] // The `postback_text` by index position, optional.
+        'params' => ['foo', 'bar'], // The template params by index position, optional.
+        'buttons' => [['index' => 0, 'text' => '<postback_text>']] // The `postback_text` by index position, optional.
     ])
     \Heybot\Client\Message\Template::create([
         'phoneNumber' => '5523456782', 

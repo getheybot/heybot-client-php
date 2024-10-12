@@ -22,4 +22,5 @@ enum MessageType: string {
     case TEXT = 'text';
     case VIDEO = 'video';
     case CTA = 'cta_url';
+    case LOCATION_REQUEST = 'location_request_message';
 }

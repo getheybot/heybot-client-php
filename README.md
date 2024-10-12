@@ -206,3 +206,13 @@ $whatsapp = \Heybot\Client\Message\CallToAction::create([
     'footerText' => 'Thank you',
 ]);
 ```
+
+# Request location
+
+```php
+$whatsapp = new \Heybot\Client\Http\Whatsapp(apiKey: '');
+
+$whatsapp = \Heybot\Client\Message\RequestLocation::create([
+    'text' => 'Share your location',
+]);
+```

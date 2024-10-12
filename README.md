@@ -177,140 +177,32 @@ $messages = [
 
 $whatsapp->request($messages);
 ```
-
-## Send campaign template
-### usually for segments
-
+## Send Call To Action message
 ```php
 
-$whatsapp = new \Heybot\Client\Whatsapp(apiKey: '')
 
-$whatsapp->campaign(
-    name: 'Engagement Express: Ages 18 - 25"', // 100 chars limit 
-    templateId: '{template-id}'
-);
+$whatsapp = new \Heybot\Client\Http\Whatsapp(apiKey: '');
 
-$messages = [
-    \Heybot\Client\Message\Template::create([
-        'phoneNumber' => '5523456782', 
-        'params' => ['foo A', 'bar B'] // The template params required
-    ]),
-    \Heybot\Client\Message\Template::create([
-        'phoneNumber' => '5698544585', 
-        'params' => ['foo', 'bar'] // The template params required
-    ]),
-    // ...
-];
-
-$whatsapp->request($messages);
-
-// Another campaign
-
-$whatsapp->campaign(
-    name: 'Engagement Express: Ages 26 - 30"', // 100 chars limit 
-    templateId: '{template-id}'
-);
-
-$messages = [
-    \Heybot\Client\Message\Template::create([
-        'phoneNumber' => '5698544585', 
-        'params' => ['foo A', 'bar B'] // The template params required
-    ]),
-    \Heybot\Client\Message\Template::create([
-        'phoneNumber' => '5523456782', 
-        'params' => ['foo', 'bar'] // The template params required
-    ]),
-    // ...
-];
-
-$whatsapp->request($messages);
-```
-
-# Coming soon
-
-* Chat - Not available yet
-* Leads - Not available yet
-
-## Chat - Not available yet
-
-
-```php
-$chat = new \Heybot\Client\Http\Chat(apiKey: '')
-
-$chat->request(
-    \Heybot\Chat\Chat::create([
-        'entity' => '5523456782', 
-        'action' => \Heybot\Client\Enums\ChatOptions::START
-    ])
-);
-
-$chat->request(
-    \Heybot\Chat\Chat::create([
-        'entity' => '5523456782', 
-        'action' => \Heybot\Client\Enums\ChatOptions::END
-    ])
-);
-```
-
-## Leads - Not available yet
-
-```php
-$leads = new \Heybot\Client\Http\Lead(apiKey: '')
-
-$openLead = $leads->request([
-    \Heybot\Client\Lead\Open::create([
-        'phoneNumber' => '521782003377', 
-        'meta' => [
-            \Heybot\Client\Lead\Meta::create(['metaType'=> Heybot\Client\Enums\LeadMetaTypeOption::EMAIL, 'metaKey' => 'email', 'metaValue' => 'me@gmail.com']),
-            \Heybot\Client\Lead\Meta::create(['metaType'=> Heybot\Client\Enums\LeadMetaTypeOption::TEXT, 'metaKey' => 'name', 'metaValue' => 'John Doe']),
-            \Heybot\Client\Lead\Meta::create(['metaType'=> Heybot\Client\Enums\LeadMetaTypeOption::TEXT, 'metaKey' => 'address', 'metaValue' => 'Meta Way, Menlo Park, California 94025, United States of America']),
-            \Heybot\Client\Lead\Meta::create(['metaType'=> Heybot\Client\Enums\LeadMetaTypeOption::LOCATION, 'metaKey' => 'coords', 'metaValue' => '18.354425,-99.7628451']),
-            \Heybot\Client\Lead\Meta::create(['metaType'=> Heybot\Client\Enums\LeadMetaTypeOption::INTEGER, 'metaKey' => 'age', 'metaValue' => '27']),
-            \Heybot\Client\Lead\Meta::create(['metaType'=> Heybot\Client\Enums\LeadMetaTypeOption::LINK, 'metaKey' => 'facebook', 'metaValue' => 'https://whatsapp.com']),
-        ]
-    ])
+$whatsapp = \Heybot\Client\Message\CallToAction::create([
+    'buttonTex' => 'Click Me',
+    'buttonUrl' => 'https://heybot.cloud',
+    'text' => '¡Welcome to Heybot!',
+    'footerText' => 'Thank you',
 ]);
 
-$leadId = $openLead->collect()->get('id'); // 'hsdqxzE4c4R41wKGzXkD7'
-
-$openLead = $leads->request([
-    \Heybot\Client\Lead\Patch::create([
-        'leadId' => $leadId
-        'meta' => [
-            \Heybot\Client\Lead\Meta::create(['metaType'=> Heybot\Client\Enums\LeadMetaTypeOption::TEXT, 'metaKey' => 'name', 'metaValue' => 'John Doe']),
-            \Heybot\Client\Lead\Meta::create(['metaType'=> Heybot\Client\Enums\LeadMetaTypeOption::LOCATION, 'metaKey' => 'coords', 'metaValue' => '18.354425,-99.7628451']),
-        ]
-    ])
+$whatsapp = \Heybot\Client\Message\CallToAction::create([
+    'headerImage' => 'https;//heybot.cloud/logo.png',
+    'buttonTex' => 'Click Me',
+    'buttonUrl' => 'https://heybot.cloud',
+    'text' => '¡Welcome to Heybot!',
+    'footerText' => 'Thank you',
 ]);
 
-$leads->request([\Heybot\Client\Lead\Cancel::create(['leadId' => $leadId])]);
-
-$leads->request([\Heybot\Client\Lead\Close::create(['leadId' => $leadId])]);
-
-$leads->request([\Heybot\Client\Lead\ReOpen::create(['leadId' => $leadId])]);
-
-$leads->request([
-    \Heybot\Client\Lead\Attach::create([
-        'leadId' => $leadId,
-        'meta' => [
-            \Heybot\Client\Lead\Meta::create([
-                'metaType'=> Heybot\Client\Enums\LeadMetaTypeOption::TEXT, 
-                'metaKey' => 'contact', 
-                'metaValue' => '5217772334456'
-            ])
-        ]
-    ])
-]);
-
-$leads->request([
-    \Heybot\Client\Lead\Comment::create([
-        'leadId' => $leadId,
-        'agent' => 'agent@email.com',
-        'message' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-    ])
-]);
-
-$leads->request([
-    \Heybot\Client\Lead\Solve::create(['leadId' => $leadId])
+$whatsapp = \Heybot\Client\Message\CallToAction::create([
+    'headerVideo' => 'https;//heybot.cloud/logo.mp4',
+    'buttonTex' => 'Click Me',
+    'buttonUrl' => 'https://heybot.cloud',
+    'text' => '¡Welcome to Heybot!',
+    'footerText' => 'Thank you',
 ]);
 ```

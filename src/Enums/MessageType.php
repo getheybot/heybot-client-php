@@ -21,4 +21,5 @@ enum MessageType: string {
     case TEMPLATE = 'template';
     case TEXT = 'text';
     case VIDEO = 'video';
+    case CTA = 'cta_url';
 }

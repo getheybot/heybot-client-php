@@ -16,7 +16,7 @@
         }
     ],
     "require": {
-        "php": "^8.2",
+        "php": "^8.2 || ^8.3",
         "illuminate/http": "~11",
         "not-empty/ulid-php-lib": "^6.0"
     },

@@ -2,6 +2,7 @@
 
 namespace Heybot\Client\Http;
 
+use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Support\Facades\Http;
 use Heybot\Client\Interfaces\Strategy;
@@ -22,12 +23,12 @@ class Whatsapp implements Strategy
 
     /**
      * @param string $apiKey
-     * @param ServerOption $server
+     * @param string $server
      */
     public function __construct(
         private string $apiKey,
-        private ServerOption $server = ServerOption::HEYBOT_SANDBOX,
-    ) { }
+        private string $server = ServerOption::HEYBOT_SANDBOX->value,
+    ) {}
 
     /**
      * @param $phoneNumber
@@ -87,13 +88,13 @@ class Whatsapp implements Strategy
             ],
         };
 
-        return Http::withToken(
-            $this->apiKey
-        )->timeout(
-            30
-        )->withHeaders([
-            'User-Agent' => self::USER_AGENT,
-        ])->acceptJson()->asJson()->post($this->server->value . $this->resource, $payload);
+        return Http::withToken($this->apiKey)
+            ->withHeaders(['User-Agent' => self::USER_AGENT, 'Connection' => 'keep-alive'])
+            ->withOptions(['pool_size' => 100]) // Limit to 100 simultaneous connections
+            ->timeout(30)
+            ->acceptJson()
+            ->asJson()
+            ->post($this->server->value . $this->resource, $payload);
     }
 
     /**
@@ -119,12 +120,22 @@ class Whatsapp implements Strategy
             ],
         };
 
-        return Http::withToken(
-            $this->apiKey
-        )->timeout(
-            10
-        )->withHeaders([
-            'User-Agent' => self::USER_AGENT,
-        ])->async()->acceptJson()->asJson()->post($this->server->value . $this->resource, $payload);
+        $promise = Http::async()
+            ->withToken($this->apiKey)
+            ->withHeaders(['User-Agent' => self::USER_AGENT, 'Connection' => 'keep-alive'])
+            ->withOptions(['pool_size' => 100]) // Limit to 100 simultaneous connections
+            ->timeout(30)
+            ->acceptJson()
+            ->asJson()
+            ->post($this->server->value . $this->resource, $payload);
+
+        $promise->then(
+            function (PromiseInterface $response) {},
+            function ($exception) {}
+        );
+
+        $promise->wait(false);
+
+        return $promise;
     }
 }

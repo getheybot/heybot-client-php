@@ -27,7 +27,7 @@ class Whatsapp implements Strategy
      */
     public function __construct(
         private string $apiKey,
-        private string $server = ServerOption::HEYBOT_SANDBOX->value,
+        private string $server = 'https://heybot.dev/api/v1',
     ) {}
 
     /**

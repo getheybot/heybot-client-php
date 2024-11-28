@@ -6,7 +6,6 @@ use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Support\Facades\Http;
 use Heybot\Client\Interfaces\Strategy;
-use Heybot\Client\Enums\ServerOption;
 
 class Whatsapp implements Strategy
 {
@@ -94,7 +93,7 @@ class Whatsapp implements Strategy
             ->timeout(30)
             ->acceptJson()
             ->asJson()
-            ->post($this->server->value . $this->resource, $payload);
+            ->post($this->server . $this->resource, $payload);
     }
 
     /**
@@ -127,7 +126,7 @@ class Whatsapp implements Strategy
             ->timeout(30)
             ->acceptJson()
             ->asJson()
-            ->post($this->server->value . $this->resource, $payload);
+            ->post($this->server . $this->resource, $payload);
 
         $promise->then(
             function (PromiseInterface $response) {},
